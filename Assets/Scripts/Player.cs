@@ -4,5 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public int health = 10;
+    public int maxHealth = 100;
+    public int health;
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health < 0)
+        {
+            health = 0;
+        }
+    }
 }
