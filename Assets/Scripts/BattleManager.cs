@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
-    public HealthBar healthBar;
     public Player player;
 
-    void Awake()
-    {
-        player.health = player.maxHealth;
-        healthBar.SetMaxHealth(player.maxHealth);
-    }
+    public Enemy enemy;
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
             player.TakeDamage(10);
-            healthBar.UpdateHealth(player.health);
+        }
+        if(Input.GetKeyDown(KeyCode.D))
+        {
+            enemy.TakeDamage(10);
         }
     }
 }
