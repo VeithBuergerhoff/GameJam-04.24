@@ -8,6 +8,8 @@ public class BattleManager : MonoBehaviour
 
     public Enemy enemy;
 
+    public GameState state = GameState.START;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
