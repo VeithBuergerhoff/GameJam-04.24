@@ -1,11 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class IntroSlideshow : MonoBehaviour
 {
+  
+  public static event Action OnIntroFinished;
 
     public Image image;
     
@@ -60,6 +63,7 @@ public class IntroSlideshow : MonoBehaviour
         {
             // TODO: Load first Battle Scene
             currentImage = 0;
+            OnIntroFinished();
         }
 
         timerRemaining = timer;
