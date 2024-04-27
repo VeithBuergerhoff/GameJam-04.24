@@ -284,6 +284,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
   maxHealth: 100
-  health: 0
+  health: 100
   cardDisplay: {fileID: 1841974330873995078}
-  cards: []

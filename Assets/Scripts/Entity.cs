@@ -9,16 +9,10 @@ namespace Assets.Scripts
 {
     public class Entity : MonoBehaviour
     {
-
         public HealthBar healthBar;
 
         public int maxHealth = 100;
         public int health;
-
-        private void Awake()
-        {
-            Respawn();
-        }
 
         public void TakeDamage(int damage)
         {
@@ -35,6 +29,5 @@ namespace Assets.Scripts
             health = maxHealth;
             healthBar.SetMaxHealth(maxHealth);
         }
-
     }
 }
