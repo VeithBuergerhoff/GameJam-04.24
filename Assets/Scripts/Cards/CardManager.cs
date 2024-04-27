@@ -1,8 +1,13 @@
+using System.Linq;
 using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    public Card[] cards;
+
+    public Card[] essences;
+
+    public Card[] craftableCards;
+
     public Player player;
     public int initialCardAmmount = 5;
     private readonly static System.Random random = new();
@@ -11,7 +16,9 @@ public class CardManager : MonoBehaviour
     {
         for (int i = 0; i < initialCardAmmount; i++)
         {
-            player.cardDisplay.AddCard(cards[random.Next(cards.Length)]);
+            var initalEssenceNames = new string[] {"Feuer", "Wasser", "Erde", "Wind"};
+            var initalEssences = essences.Where(card => initalEssenceNames.Contains(card.name)).ToArray();
+            player.cardDisplay.AddCard(initalEssences[random.Next(initalEssences.Length)]);
         }
     }
 }
