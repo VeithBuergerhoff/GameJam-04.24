@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using System;
 using System.Collections.Generic;
 
 public class Player : Entity
@@ -6,12 +7,11 @@ public class Player : Entity
     public CardDisplay cardDisplay;
 
     public List<Card> cards;
+    public event Action<CardController> CardClicked;
 
     void Awake()
     {
-        cardDisplay.CardClicked += card => {
-            RemoveCard(card);
-        };
+        cardDisplay.CardClicked += CardClicked;
     }
 
     public void AddCard(Card card)
@@ -24,5 +24,10 @@ public class Player : Entity
     {
         cards.Remove(card);
         cardDisplay.RemoveCard(card);
+    }
+
+    void OnDestroy()
+    {
+        cardDisplay.CardClicked -= CardClicked;
     }
 }

@@ -8,21 +8,20 @@ public class CardDisplay : MonoBehaviour
 {
     public GameObject cardDisplay;
 
-    private List<Tuple<Card, GameObject>> cardDisplays = new();
+    private List<Tuple<Card, CardController>> cardDisplays = new();
     public float cardWidth;
 
-    public event Action<Card> CardClicked;
+    public event Action<CardController> CardClicked;
 
     public void AddCard(Card card)
     {
-        var image = Instantiate(cardDisplay);
+        var image = Instantiate(cardDisplay).GetComponent<CardController>();
         cardDisplays.Add(Tuple.Create(card, image));
         image.GetComponent<Image>().sprite = card.image;
-        var cardController = image.GetComponent<CardController>();
         image.transform.SetParent(transform);
 
-        cardController.card = card;
-        cardController.CardClicked += CardClicked;
+        image.card = card;
+        image.CardClicked += CardClicked;
 
         Rerender();
     }
@@ -33,6 +32,7 @@ public class CardDisplay : MonoBehaviour
         if (item != null)
         {
             cardDisplays.Remove(item);
+            item.Item2.CardClicked -= CardClicked;
             Destroy(item.Item2);
             Rerender();
         }

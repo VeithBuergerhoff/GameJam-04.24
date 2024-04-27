@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
@@ -10,15 +8,13 @@ public class BattleManager : MonoBehaviour
 
     public GameState state = GameState.START;
 
-    void Update()
+
+    void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        player.CardClicked += controller => 
         {
-            player.TakeDamage(10);
-        }
-        if(Input.GetKeyDown(KeyCode.D))
-        {
-            enemy.TakeDamage(10);
-        }
+            controller.isEnabled = false;
+            Debug.Log("Card Clicked!");
+        };
     }
 }

@@ -7,13 +7,15 @@ using UnityEngine.UI;
 public class CardController : EventTrigger
 {
     public Color highlightColor = Color.magenta;
+    public Color disabledColor = Color.gray;
     public int highlightBump = 20;
+    public bool isEnabled = true;
 
     private Image image;
     private RectTransform rectTransform;
 
     public Card card;
-    public event Action<Card> CardClicked;
+    public event Action<CardController> CardClicked;
 
     void Awake()
     {
@@ -23,7 +25,7 @@ public class CardController : EventTrigger
 
     public override void OnPointerEnter(PointerEventData eventData)
     {
-        image.color = highlightColor;
+        SetHighlight();
         rectTransform.anchoredPosition += new Vector2(0, highlightBump);
     }
 
@@ -35,6 +37,15 @@ public class CardController : EventTrigger
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        CardClicked?.Invoke(card);
+        if (isEnabled)
+        {
+            CardClicked?.Invoke(this);
+            SetHighlight();
+        }
+    }
+
+    private void SetHighlight()
+    {
+        image.color = isEnabled ? highlightColor : disabledColor;
     }
 }
