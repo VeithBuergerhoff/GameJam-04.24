@@ -5,18 +5,32 @@ using System.Collections.Generic;
 public class CraftingHandler
 {
 
-    private Dictionary<(string, string), Func<Card>> craftingRecipes = new ();
+    private Dictionary<(string, string), Func<Card>> craftingRecipes = new();
 
     public CardManager cardManager;
 
-    public CraftingHandler() {
+    public CraftingHandler()
+    {
+        //Basic Cards
+        AddCardRecipe("Wasser", "Feuer", () => GetDampfCard());
+        AddCardRecipe("Wasser", "Luft", () => GetEisCard());
+        AddCardRecipe("Wasser", "Erde", () => GetPflanzeCard());
+        AddCardRecipe("Feuer", "Erde", () => GetLavaCard());
+        AddCardRecipe("Erde", "Luft", () => GetSandCard());
 
-        AddCardRecipe(("Wasser", "Feuer"), () => GetDampfCard());
-        AddCardRecipe(("Wasser", "Luft"), () => GetEisCard());
-        AddCardRecipe(("Wasser", "Erde"), () => GetPflanzeCard());        
-        AddCardRecipe(("Feuer", "Erde"), () => GetLavaCard());
-        AddCardRecipe(("Erde", "Luft"), () => GetSandCard());                
+        // Feuer speical
+        AddCardRecipe("Feuer", "Schleim", () => GetFeuerschleimCard());
+        AddCardRecipe("Feuer", "Schuppen", () => GetFeuerschuppenCard());
+        AddCardRecipe("Feuer", "Tentakel", () => GetFeuertentakelCard());
 
+        // Erde speical
+        AddCardRecipe("Erde", "Schleim", () => GetErdschleimCard());
+        AddCardRecipe("Erde", "Schuppen", () => GetErdschuppenCard());
+        AddCardRecipe("Erde", "Tentakel", () => GetErdtentakelCard());
+
+        // Wasser special
+        AddCardRecipe("Wasser", "Schlein", () => GetWasserschleimCard());
+        AddCardRecipe("Wasser", "Tentakel", () => GetWassertentakelCard());
     }
 
     public Card craftFrom(string esscence1, string esscence2)
@@ -33,11 +47,10 @@ public class CraftingHandler
         }
     }
 
-    private void AddCardRecipe((string, string) combination, Func<Card> cardFunction)
+    private void AddCardRecipe(string a, string b, Func<Card> cardFunction)
     {
-        craftingRecipes.Add(combination, cardFunction);
-        (string, string) swappedCombination = (combination.Item2, combination.Item1);
-        craftingRecipes.Add(swappedCombination, cardFunction);
+        craftingRecipes.Add((a, b), cardFunction);
+        craftingRecipes.Add((b, a), cardFunction);
     }
 
     private Card GetSandCard()
@@ -63,5 +76,45 @@ public class CraftingHandler
     private Card GetEisCard()
     {
         return cardManager.craftableCards.Single(c => c.name == "Eis");
+    }
+
+    private Card GetErdschleimCard()
+    {
+        return cardManager.craftableCards.Single(c => c.name == "Erdschleim");
+    }
+
+    private Card GetErdschuppenCard()
+    {
+        return cardManager.craftableCards.Single(c => c.name == "Erdschuppen");
+    }
+
+    private Card GetErdtentakelCard()
+    {
+        return cardManager.craftableCards.Single(c => c.name == "Erdtentakel");
+    }
+
+    private Card GetFeuerschleimCard()
+    {
+        return cardManager.craftableCards.Single(c => c.name == "Feuerschleim");
+    }
+
+    private Card GetFeuerschuppenCard()
+    {
+        return cardManager.craftableCards.Single(c => c.name == "Feuerschuppen");
+    }
+
+    private Card GetFeuertentakelCard()
+    {
+        return cardManager.craftableCards.Single(c => c.name == "Feuertentakel");
+    }
+
+    private Card GetWasserschleimCard()
+    {
+        return cardManager.craftableCards.Single(c => c.name == "Wasserschleim");
+    }
+
+    private Card GetWassertentakelCard()
+    {
+        return cardManager.craftableCards.Single(c => c.name == "Wassertentakel");
     }
 }

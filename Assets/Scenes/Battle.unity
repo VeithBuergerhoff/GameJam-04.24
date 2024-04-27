@@ -278,23 +278,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf6462ef0060b64f888c8d407a40ba6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards:
-  - image: {fileID: 21300000, guid: 2727c3f2d172b344b9f9406f2cb51ecf, type: 3}
-    name: Erde
-    damageType: 3
-    damage: 10
-  - image: {fileID: 21300000, guid: cd61285f24a3a924c9469985507aa299, type: 3}
-    name: Feuer
-    damageType: 0
-    damage: 10
-  - image: {fileID: 21300000, guid: b332c1aa9963e6d4f85cefeba359405b, type: 3}
-    name: Wind
-    damageType: 5
-    damage: 10
-  - image: {fileID: 21300000, guid: e66f023b59e1f0145a4bce8d897d9c4e, type: 3}
-    name: Wasser
-    damageType: 6
-    damage: 10
   essences:
   - image: {fileID: 21300000, guid: 2727c3f2d172b344b9f9406f2cb51ecf, type: 3}
     name: Erde
@@ -305,7 +288,7 @@ MonoBehaviour:
     damageType: 0
     damage: 10
   - image: {fileID: 21300000, guid: b332c1aa9963e6d4f85cefeba359405b, type: 3}
-    name: Wind
+    name: Luft
     damageType: 5
     damage: 10
   - image: {fileID: 21300000, guid: e66f023b59e1f0145a4bce8d897d9c4e, type: 3}
@@ -326,55 +309,55 @@ MonoBehaviour:
     damage: 0
   craftableCards:
   - image: {fileID: 21300000, guid: 399bface8c8bdc44bab53fc9ca8801d5, type: 3}
-    name: 
+    name: Dampf
     damageType: 8
-    damage: 10
+    damage: 5
   - image: {fileID: 21300000, guid: 7c43aae1c5b44704aa347ea8311240d3, type: 3}
-    name: 
+    name: Eis
     damageType: 1
-    damage: 10
+    damage: 5
+  - image: {fileID: 21300000, guid: decacbed7ef871640a3edf38d0b400c5, type: 3}
+    name: Lava
+    damageType: 2
+    damage: 5
+  - image: {fileID: 21300000, guid: 38a3c18a7fd46914b816071362c490b7, type: 3}
+    name: Sand
+    damageType: 4
+    damage: 5
+  - image: {fileID: 21300000, guid: a99198bb3861f6443b04ce3f36ae3452, type: 3}
+    name: Pflanze
+    damageType: 7
+    damage: 5
   - image: {fileID: 21300000, guid: f8d16f0785a9d4e46b74a54509467e84, type: 3}
-    name: 
+    name: Erdschleim
     damageType: 3
     damage: 10
   - image: {fileID: 21300000, guid: b88db73942f22b4449ca7cd081adfad0, type: 3}
-    name: 
+    name: Erdschuppen
     damageType: 3
     damage: 10
   - image: {fileID: 21300000, guid: 2ac640d0204b3204bae81e6a97ce14f8, type: 3}
-    name: 
+    name: Erdtentakel
     damageType: 3
     damage: 10
   - image: {fileID: 21300000, guid: 73ad93124f251ca44a25f8abe9cdfacc, type: 3}
-    name: 
+    name: Feuerschleim
     damageType: 0
     damage: 10
   - image: {fileID: 21300000, guid: 9045c0804ebde07479e24d0d4baf26c8, type: 3}
-    name: 
+    name: Feuertentakel
     damageType: 0
     damage: 10
-  - image: {fileID: 21300000, guid: decacbed7ef871640a3edf38d0b400c5, type: 3}
-    name: 
-    damageType: 2
-    damage: 10
-  - image: {fileID: 21300000, guid: a99198bb3861f6443b04ce3f36ae3452, type: 3}
-    name: 
-    damageType: 7
-    damage: 10
-  - image: {fileID: 21300000, guid: 38a3c18a7fd46914b816071362c490b7, type: 3}
-    name: 
-    damageType: 4
+  - image: {fileID: 21300000, guid: 5dd8389317fe757458b5b2c95cb0591d, type: 3}
+    name: Feuerschuppen
+    damageType: 0
     damage: 10
   - image: {fileID: 21300000, guid: 86924b1aca6ca6d4eb7dc4ce25673dcf, type: 3}
-    name: 
-    damageType: 6
-    damage: 10
-  - image: {fileID: 21300000, guid: 86924b1aca6ca6d4eb7dc4ce25673dcf, type: 3}
-    name: 
+    name: Wasserschleim
     damageType: 6
     damage: 10
   - image: {fileID: 21300000, guid: 262babb10cd4e774ebc2e4a3472bceb4, type: 3}
-    name: 
+    name: Wassertentakel
     damageType: 6
     damage: 10
   player: {fileID: 175943558}
