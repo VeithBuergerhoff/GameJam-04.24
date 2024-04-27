@@ -1,19 +1,17 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
     public Card[] cards;
-    public CardDisplay cardDisplay;
-    private readonly static System.Random random= new();
+    public Player player;
+    public int initialCardAmmount = 5;
+    private readonly static System.Random random = new();
 
-    void Update()
+    void Awake()
     {
-        if (Input.GetKeyDown(KeyCode.C))
+        for (int i = 0; i < initialCardAmmount; i++)
         {
-            cardDisplay.AddCard(cards[random.Next(cards.Length)]);
+            player.AddCard(cards[random.Next(cards.Length)]);
         }
     }
 }

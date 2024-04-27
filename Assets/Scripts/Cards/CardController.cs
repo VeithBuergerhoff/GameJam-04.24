@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -10,6 +11,9 @@ public class CardController : EventTrigger
 
     private Image image;
     private RectTransform rectTransform;
+
+    public Card card;
+    public event Action<Card> CardClicked;
 
     void Awake()
     {
@@ -26,6 +30,11 @@ public class CardController : EventTrigger
     override public void OnPointerExit(PointerEventData eventData)
     {
         image.color = Color.white;
-        rectTransform.anchoredPosition -= new Vector2(0, highlightBump);
+        rectTransform.anchoredPosition *= Vector2.right;
+    }
+
+    public override void OnPointerClick(PointerEventData eventData)
+    {
+        CardClicked?.Invoke(card);
     }
 }

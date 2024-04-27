@@ -219,8 +219,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000030517578, y: -167.34}
-  m_SizeDelta: {x: 443.938, y: 240.919}
+  m_AnchoredPosition: {x: -0.0024948, y: -167.34}
+  m_SizeDelta: {x: 889.21, y: 240.919}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1841974330873995078
 MonoBehaviour:
@@ -285,3 +285,5 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   maxHealth: 100
   health: 0
+  cardDisplay: {fileID: 1841974330873995078}
+  cards: []
