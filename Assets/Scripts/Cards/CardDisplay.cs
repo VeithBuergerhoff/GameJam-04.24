@@ -9,6 +9,7 @@ public class CardDisplay : MonoBehaviour
     public GameObject cardDisplay;
     public float cardWidth;
 
+    // aggregates all card click events from the owned controllers 
     public event Action<CardController> CardClicked;
 
     private List<CardController> cardDisplays = new();
@@ -21,7 +22,7 @@ public class CardDisplay : MonoBehaviour
         image.transform.SetParent(transform);
 
         image.card = card;
-        image.CardClicked += CardClicked;
+        image.CardClicked += c => CardClicked?.Invoke(c);
 
         Rerender();
     }

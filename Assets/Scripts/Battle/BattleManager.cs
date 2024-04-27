@@ -5,11 +5,11 @@ public class BattleManager : MonoBehaviour
     public Player player;
     public Enemy enemy;
     public GameState state = GameState.START;
-    
+
     private CardController cardToEnable;
 
-    void Awake()
-    {
+    void Start()
+    {        
         player.cardDisplay.CardClicked += controller =>
         {
             if (state == GameState.PLAYERTURN)
@@ -18,7 +18,7 @@ public class BattleManager : MonoBehaviour
                 {
                     cardToEnable.isEnabled = true;
                 }
-                
+
                 controller.isEnabled = false;
                 cardToEnable = controller;
                 enemy.TakeDamage((int)(enemy.type.GetDamageMultiplier(controller.card.damageType) * controller.card.damage));
