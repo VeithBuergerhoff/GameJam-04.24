@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b63651439359884cbe4943924bbe42a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightColor: {r: 1, g: 0, b: 1, a: 1}
+  highlightColor: {r: 0.94826746, g: 1, b: 0.9471698, a: 1}
   disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.7176471}
   highlightBump: 20
   isEnabled: 1
