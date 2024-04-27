@@ -11,7 +11,7 @@ public class CardManager : MonoBehaviour
     {
         for (int i = 0; i < initialCardAmmount; i++)
         {
-            player.AddCard(cards[random.Next(cards.Length)]);
+            player.cardDisplay.AddCard(cards[random.Next(cards.Length)]);
         }
     }
 }

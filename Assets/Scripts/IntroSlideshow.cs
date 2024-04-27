@@ -1,73 +1,69 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class IntroSlideshow : MonoBehaviour
 {
-  
-  public static event Action OnIntroFinished;
+	public Image image;
 
-    public Image image;
-    
-    private int currentImage;
+	private int currentImage;
 
-    public float timer = 4.0f;
-    public float timerRemaining = 4.0f;
-    public bool timerIsRunning = true;
+	public float timer = 4.0f;
+	public float timerRemaining = 4.0f;
+	public bool timerIsRunning = true;
 
-    public Sprite[] images;
+	public Sprite[] images;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-       currentImage = 0;
-       timerRemaining = timer;
-       timerIsRunning = true;
-       image.sprite = images[currentImage];
-    }
+	// Start is called before the first frame update
+	void Start()
+	{
+		currentImage = 0;
+		timerRemaining = timer;
+		timerIsRunning = true;
+		image.sprite = images[currentImage];
+	}
 
-    // Update is called once per frame
-    void Update()
-    {      
+	// Update is called once per frame
+	void Update()
+	{
 
-      if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
-        {
-            ShowNextImage();
-        }
+		if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space))
+		{
+			ShowNextImage();
+		}
 
-      CheckTimer();
-    }
+		CheckTimer();
+	}
 
-    private void CheckTimer()
-    {
-        if(!timerIsRunning) {
-          return;
-        }
+	private void CheckTimer()
+	{
+		if (!timerIsRunning)
+		{
+			return;
+		}
 
-        if(timerRemaining > 0) {
-          timerRemaining -= Time.deltaTime;
-        } else {
-          ShowNextImage();
-        }
-    }
+		if (timerRemaining > 0)
+		{
+			timerRemaining -= Time.deltaTime;
+		}
+		else
+		{
+			ShowNextImage();
+		}
+	}
 
 
-    private void ShowNextImage()
-    {
-        currentImage++;
+	private void ShowNextImage()
+	{
+		if (++currentImage >= images.Length)
+		{
+			SceneManager.LoadScene(1);
+			return;
+		}
 
-        if (currentImage >= images.Length)
-        {
-            // TODO: Load first Battle Scene
-            currentImage = 0;
-            OnIntroFinished();
-        }
-
-        timerRemaining = timer;
-        image.sprite = images[currentImage];
-    }
+		timerRemaining = timer;
+		image.sprite = images[currentImage];
+	}
 
 }

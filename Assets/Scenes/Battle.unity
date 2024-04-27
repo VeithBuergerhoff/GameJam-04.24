@@ -319,7 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 175943558}
   enemy: {fileID: 60448702}
-  state: 1
+  state: 0
 --- !u!1 &687500371
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,8 +974,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 687500374}
   - {fileID: 1659217646}
+  - {fileID: 8571847468124842150}
   - {fileID: 97415454}
   - {fileID: 861140243}
-  - {fileID: 8571847468124842150}
-  - {fileID: 2082240446}
   - {fileID: 537328060}
+  - {fileID: 2082240446}
