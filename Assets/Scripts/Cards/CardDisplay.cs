@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,11 +14,8 @@ public class CardDisplay : MonoBehaviour
         var image = Instantiate(cardDisplay);
         cardDisplays.Add(image);
         image.GetComponent<Image>().sprite = card.image;
-        image.transform.SetParent(transform);
-    }
-
-    public void Update()
-    {
+        image.transform.SetParent(transform);        
+        
         for (int i = 0; i < cardDisplays.Count; i++)
         {
             var width = cardWidth - cardDisplays.Count;
