@@ -1,4 +1,5 @@
 using Assets.Scripts;
+using UnityEngine;
 
 public class Player : Entity
 {

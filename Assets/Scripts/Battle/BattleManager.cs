@@ -1,56 +1,69 @@
+using System.Collections;
 using UnityEngine;
 
 public class BattleManager : MonoBehaviour
 {
     public Player player;
     public Enemy enemy;
-    public GameState state = GameState.START;
-    
+    public GameState state = GameState.Start;
+
     private CardController cardToEnable;
 
-    void Awake()
+    void Start()
     {
         player.cardDisplay.CardClicked += controller =>
         {
-            if (state == GameState.PLAYERTURN)
+            if (state == GameState.PlayerTurn)
             {
-                if (cardToEnable != null)
-                {
-                    cardToEnable.isEnabled = true;
-                }
-                
-                controller.isEnabled = false;
-                cardToEnable = controller;
-                enemy.TakeDamage((int)(enemy.type.GetDamageMultiplier(controller.card.damageType) * controller.card.damage));
-
-                if (enemy.health <= 0)
-                {
-                    state = GameState.WON;
-                }
-                else
-                {
-                    state = GameState.ENEMYTURN;
-                }
+                DoPlayerMove(controller);
             }
         };
 
-        state = GameState.PLAYERTURN;
+        state = GameState.PlayerTurn;
     }
 
     void Update()
     {
-        if (state == GameState.ENEMYTURN)
+        if (state == GameState.EnemyTurn)
         {
-            // we can do additional checks here
-            player.TakeDamage(10);
-            if (player.health <= 0)
-            {
-                state = GameState.LOST;
-            }
-            else
-            {
-                state = GameState.PLAYERTURN;
-            }
+            state = GameState.Processing;
+            StartCoroutine(DoEnemyMove());
+        }
+    }
+
+    private void DoPlayerMove(CardController controller)
+    {
+        if (cardToEnable != null)
+        {
+            cardToEnable.isEnabled = true;
+        }
+
+        controller.isEnabled = false;
+        cardToEnable = controller;
+        enemy.TakeDamage((int)(enemy.type.GetDamageMultiplier(controller.card.damageType) * controller.card.damage));
+
+        if (enemy.health <= 0)
+        {
+            state = GameState.Won;
+        }
+        else
+        {
+            state = GameState.EnemyTurn;
+        }
+    }
+
+    private IEnumerator DoEnemyMove()
+    {
+        yield return new WaitForSeconds(1);
+        // we can do additional checks here
+        player.TakeDamage(10);
+        if (player.health <= 0)
+        {
+            state = GameState.Lost;
+        }
+        else
+        {
+            state = GameState.PlayerTurn;
         }
     }
 }
