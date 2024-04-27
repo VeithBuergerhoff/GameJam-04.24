@@ -1,8 +1,9 @@
 ﻿public enum GameState
 {
-    START,
-    PLAYERTURN,
-    ENEMYTURN,
-    WON,
-    LOST
+    Start,
+    PlayerTurn,
+    EnemyTurn,
+    Processing,
+    Won,
+    Lost
 }
