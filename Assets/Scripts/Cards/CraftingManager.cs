@@ -8,7 +8,9 @@ public class CraftingManager : MonoBehaviour
     public GameObject cardDisplay;
 
     public CardController slot1;
+    private CardController slot1Source = null;
     public CardController slot2;
+    private CardController slot2Source = null;
     public CardController resultSlot;
 
     public Player player;
@@ -16,36 +18,34 @@ public class CraftingManager : MonoBehaviour
     void Start()
     {
         PopulateViewport();
-        slot1.CardClicked += c => { c.gameObject.SetActive(false); UpdateCraftResult(); };
-        slot2.CardClicked += c => { c.gameObject.SetActive(false); UpdateCraftResult(); };
-        resultSlot.CardClicked += c =>
+        slot1.CardClicked += c =>
         {
-            if (!slot1.gameObject.activeSelf || !slot2.gameObject.activeSelf || !resultSlot.gameObject.activeSelf)
+            c.gameObject.SetActive(false);
+            if (slot1Source != null)
             {
-                Debug.LogWarning("We somehow clicked on a card with an invalid recipe");
-                return;
+                slot1Source.isReady = true;
             }
-
-            var essence1 = player.essences.First(x => x.name == slot1.Card.name);
-            var essence2 = player.essences.First(x => x.name == slot2.Card.name);
-            player.essences.Remove(essence1);
-            player.essences.Remove(essence2);
-            player.cardDisplay.AddCard(resultSlot.Card);
-
-            slot1.gameObject.SetActive(false);
-            slot2.gameObject.SetActive(false);
-            resultSlot.gameObject.SetActive(false);
-
-            PopulateViewport();
+            slot1Source = null;
             UpdateCraftResult();
         };
+        slot2.CardClicked += c =>
+        {
+            c.gameObject.SetActive(false);
+            if (slot2Source != null)
+            {
+                slot2Source.isReady = true;
+            }
+            slot2Source = null;
+            UpdateCraftResult();
+        };
+        resultSlot.CardClicked += c => CraftCard();
     }
 
     private void PopulateViewport()
     {
-        while (cardViewport.childCount > 0)
+        foreach (Transform child in cardViewport)
         {
-            Destroy(cardViewport.GetChild(0).gameObject);
+            Destroy(child.gameObject);
         }
 
         foreach (var card in player.essences)
@@ -59,14 +59,28 @@ public class CraftingManager : MonoBehaviour
             {
                 if (!slot1.gameObject.activeSelf)
                 {
+                    if (!controller.isReady)
+                    {
+                        return;
+                    }
+
                     slot1.SetCard(controller.Card);
                     slot1.gameObject.SetActive(true);
+                    slot1Source = controller;
+                    slot1Source.isReady = false;
                     UpdateCraftResult();
                 }
                 else if (!slot2.gameObject.activeSelf)
                 {
+                    if (!controller.isReady)
+                    {
+                        return;
+                    }
+
                     slot2.SetCard(controller.Card);
                     slot2.gameObject.SetActive(true);
+                    slot2Source = controller;
+                    slot2Source.isReady = false;
                     UpdateCraftResult();
                 }
             };
@@ -90,5 +104,28 @@ public class CraftingManager : MonoBehaviour
 
         resultSlot.SetCard(craftResult);
         resultSlot.gameObject.SetActive(true);
+    }
+
+    private void CraftCard()
+    {
+        if (!slot1.gameObject.activeSelf || !slot2.gameObject.activeSelf || !resultSlot.gameObject.activeSelf)
+        {
+            Debug.LogWarning("We somehow clicked on a card with an invalid recipe");
+            return;
+        }
+
+        var essence1 = player.essences.First(x => x.name == slot1.Card.name);
+        var essence2 = player.essences.First(x => x.name == slot2.Card.name);
+        player.essences.Remove(essence1);
+        player.essences.Remove(essence2);
+        player.cardDisplay.AddCard(resultSlot.Card);
+
+        slot1.gameObject.SetActive(false);
+        slot1Source.gameObject.SetActive(false);
+        slot2.gameObject.SetActive(false);
+        slot2Source.gameObject.SetActive(false);
+        resultSlot.gameObject.SetActive(false);
+
+        UpdateCraftResult();
     }
 }
