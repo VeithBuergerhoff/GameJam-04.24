@@ -15,13 +15,11 @@ public class CardDisplay : MonoBehaviour
 
     public void AddCard(Card card)
     {
-        var controller = Instantiate(cardDisplay, transform).GetComponent<CardController>();
+        var controller = Instantiate(cardDisplay, transform).GetComponentInChildren<CardController>();
         cardDisplays.Add(controller);
 
         controller.SetCard(card);
         controller.CardClicked += c => CardClicked?.Invoke(c);
-
-        Rerender();
     }
 
     public void RemoveCard(Card card)
@@ -32,19 +30,6 @@ public class CardDisplay : MonoBehaviour
             cardDisplays.Remove(item);
             item.CardClicked -= CardClicked;
             Destroy(item);
-            Rerender();
-        }
-    }
-
-    public void Rerender()
-    {
-        var cardWidth = cardDisplay.GetComponent<RectTransform>().rect.width;
-        for (int i = 0; i < cardDisplays.Count; i++)
-        {
-            var width = cardWidth / 2 - cardDisplays.Count;
-            var shift = width * (cardDisplays.Count - 1) / 2;
-            var newPosition = transform.position + Vector3.right * (i * width - shift);
-            cardDisplays[i].transform.position = newPosition;
         }
     }
 }
