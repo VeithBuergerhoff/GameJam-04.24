@@ -43,7 +43,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    private void ToggleCraftingView()
+    public void ToggleCraftingView()
     {
         if (gameView.activeSelf)
         {
@@ -77,6 +77,7 @@ public class BattleManager : MonoBehaviour
             // Next Enemy
             state = GameState.PlayerTurn;
             player.Respawn();
+            ToggleCraftingView();
 
             if (!enemy.LoadNextEnemy())
             {
