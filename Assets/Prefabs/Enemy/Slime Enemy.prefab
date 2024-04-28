@@ -130,6 +130,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 0}
-  maxHealth: 100
+  maxHealth: 50
   health: 0
   type: 0
+  drop:
+    image: {fileID: 21300000, guid: 44fb5b440c0367249badaff3f30da95d, type: 3}
+    name: Schleim
+    damageType: 0
+    damage: 0

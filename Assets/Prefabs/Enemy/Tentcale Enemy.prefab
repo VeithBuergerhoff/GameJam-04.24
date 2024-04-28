@@ -133,3 +133,8 @@ MonoBehaviour:
   maxHealth: 100
   health: 0
   type: 1
+  drop:
+    image: {fileID: 21300000, guid: a27ac4424b68278498d3da14df9a539c, type: 3}
+    name: Tentakel
+    damageType: 0
+    damage: 0

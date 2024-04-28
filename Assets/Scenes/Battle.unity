@@ -931,6 +931,22 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 175943558}
+    - target: {fileID: 5216387460888352343, guid: 990e7361a64182a4a880813314915902, type: 3}
+      propertyPath: essences.Array.data[0].damage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216387460888352343, guid: 990e7361a64182a4a880813314915902, type: 3}
+      propertyPath: essences.Array.data[1].damage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216387460888352343, guid: 990e7361a64182a4a880813314915902, type: 3}
+      propertyPath: essences.Array.data[2].damage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5216387460888352343, guid: 990e7361a64182a4a880813314915902, type: 3}
+      propertyPath: essences.Array.data[3].damage
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

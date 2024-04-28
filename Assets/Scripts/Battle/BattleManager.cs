@@ -45,6 +45,8 @@ public class BattleManager : MonoBehaviour
         if (enemy.health <= 0)
         {
             state = GameState.Won;
+            
+            player.essences.Add(enemy.drop);
         }
         else
         {

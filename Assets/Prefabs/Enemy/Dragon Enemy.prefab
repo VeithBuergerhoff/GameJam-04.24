@@ -133,3 +133,8 @@ MonoBehaviour:
   maxHealth: 100
   health: 0
   type: 2
+  drop:
+    image: {fileID: 21300000, guid: aa1d8efd5f0a5b445b6843eb8a35e177, type: 3}
+    name: Schuppen
+    damageType: 0
+    damage: 0
