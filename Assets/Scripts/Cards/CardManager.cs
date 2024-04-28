@@ -16,7 +16,13 @@ public class CardManager : MonoBehaviour
     {
         for (int i = 0; i < initialCardAmmount; i++)
         {
-            var initalEssenceNames = new string[] {"Feuer", "Wasser", "Erde", "Wind"};
+            var initalEssenceNames = new string[]
+            {
+                EssenceConstants.FIRE,
+                EssenceConstants.WATER,
+                EssenceConstants.EARTH,
+                EssenceConstants.AIR
+            };
             var initalEssences = essences.Where(card => initalEssenceNames.Contains(card.name)).ToArray();
             player.cardDisplay.AddCard(initalEssences[random.Next(initalEssences.Length)]);
         }
