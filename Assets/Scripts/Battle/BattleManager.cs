@@ -12,6 +12,7 @@ public class BattleManager : MonoBehaviour
 
     public GameObject gameView;
     public GameObject craftingView;
+    public CraftingManager craftingManager;
 
     private CardController cardToEnable;
 
@@ -71,6 +72,7 @@ public class BattleManager : MonoBehaviour
         {
             state = GameState.WonFight;
             player.essences.AddRange(enemy.CurrentEnemy.drops);
+            craftingManager.PopulateViewport();
 
             // Next Enemy
             state = GameState.PlayerTurn;

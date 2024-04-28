@@ -41,7 +41,7 @@ public class CraftingManager : MonoBehaviour
         resultSlot.CardClicked += c => CraftCard();
     }
 
-    private void PopulateViewport()
+    public void PopulateViewport()
     {
         foreach (Transform child in cardViewport)
         {
