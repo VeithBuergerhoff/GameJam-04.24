@@ -1,10 +1,16 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Scripting;
 
 public class BattleManager : MonoBehaviour
 {
     public Player player;
+
+    private int fightCount = 0;
+
     public Enemy enemy;
+
     public GameState state = GameState.Start;
 
     public GameObject gameView;
@@ -66,9 +72,32 @@ public class BattleManager : MonoBehaviour
 
         if (enemy.health <= 0)
         {
-            state = GameState.Won;
-
+            state = GameState.WonFight;
             player.essences.Add(enemy.drop);
+            // Next Enemy
+            if (fightCount <= 4)
+            {
+                state = GameState.PlayerTurn;
+                player.Respawn();
+                fightCount++;
+                switch (fightCount)
+                {
+                    case 1:
+                        enemy.SwapToChongusDragon();
+                        break;
+                    case 2:
+                        enemy.SwapToTentacle();
+                        break;
+                    case 3:
+                        enemy.SwapToEldrichShadow();
+                        break;
+                    case 4:
+                        // Complete Win
+                        state = GameState.Won;
+                        SceneManager.LoadScene("WindScene");
+                        break;
+                }
+            }
         }
         else
         {
