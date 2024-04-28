@@ -12,25 +12,25 @@ public class CraftingHandler
     {
         this.cardManager = cardManager;
         //Basic Cards
-        AddCardRecipe("Wasser", "Feuer", () => GetDampfCard());
-        AddCardRecipe("Wasser", "Luft", () => GetEisCard());
-        AddCardRecipe("Wasser", "Erde", () => GetPflanzeCard());
-        AddCardRecipe("Feuer", "Erde", () => GetLavaCard());
-        AddCardRecipe("Erde", "Luft", () => GetSandCard());
+        AddCardRecipe(EssenceConstants.WATER, EssenceConstants.FIRE, () => GetDampfCard());
+        AddCardRecipe(EssenceConstants.WATER, EssenceConstants.AIR, () => GetEisCard());
+        AddCardRecipe(EssenceConstants.WATER, EssenceConstants.EARTH, () => GetPflanzeCard());
+        AddCardRecipe(EssenceConstants.FIRE, EssenceConstants.EARTH, () => GetLavaCard());
+        AddCardRecipe(EssenceConstants.EARTH, EssenceConstants.AIR, () => GetSandCard());
 
         // Feuer speical
-        AddCardRecipe("Feuer", "Schleim", () => GetFeuerschleimCard());
-        AddCardRecipe("Feuer", "Schuppen", () => GetFeuerschuppenCard());
-        AddCardRecipe("Feuer", "Tentakel", () => GetFeuertentakelCard());
+        AddCardRecipe(EssenceConstants.FIRE, EssenceConstants.SLIME, () => GetFeuerschleimCard());
+        AddCardRecipe(EssenceConstants.FIRE, EssenceConstants.SHED, () => GetFeuerschuppenCard());
+        AddCardRecipe(EssenceConstants.FIRE, EssenceConstants.TENTACLE, () => GetFeuertentakelCard());
 
         // Erde speical
-        AddCardRecipe("Erde", "Schleim", () => GetErdschleimCard());
-        AddCardRecipe("Erde", "Schuppen", () => GetErdschuppenCard());
-        AddCardRecipe("Erde", "Tentakel", () => GetErdtentakelCard());
+        AddCardRecipe(EssenceConstants.EARTH, EssenceConstants.SLIME, () => GetErdschleimCard());
+        AddCardRecipe(EssenceConstants.EARTH, EssenceConstants.SHED, () => GetErdschuppenCard());
+        AddCardRecipe(EssenceConstants.EARTH, EssenceConstants.TENTACLE, () => GetErdtentakelCard());
 
         // Wasser special
-        AddCardRecipe("Wasser", "Schlein", () => GetWasserschleimCard());
-        AddCardRecipe("Wasser", "Tentakel", () => GetWassertentakelCard());
+        AddCardRecipe(EssenceConstants.WATER, EssenceConstants.SLIME, () => GetWasserschleimCard());
+        AddCardRecipe(EssenceConstants.WATER, EssenceConstants.TENTACLE, () => GetWassertentakelCard());
     }
 
     public Card Craft(string esscence1, string esscence2)
