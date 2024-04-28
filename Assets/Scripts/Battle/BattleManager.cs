@@ -94,7 +94,7 @@ public class BattleManager : MonoBehaviour
                     case 4:
                         // Complete Win
                         state = GameState.Won;
-                        SceneManager.LoadScene("WindScene");
+                        SceneManager.LoadScene("WinScene");
                         break;
                 }
             }

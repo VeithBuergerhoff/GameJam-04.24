@@ -26,7 +26,7 @@ public class Enemy : Entity
         image.sprite = Resources.Load<Sprite>("Enemy Images/Monster_Tentakelmonster");
         type = EnemyType.Tentacle;
         maxHealth = 100;
-        health = 100;
+        health = 5;
         healthBar.UpdateHealth(health);
     }
 
@@ -34,7 +34,7 @@ public class Enemy : Entity
         image.sprite = Resources.Load<Sprite>("Enemy Images/Monster_Chongusdragon");        
         type = EnemyType.ChongusDragon;
         maxHealth = 100;
-        health = 100;
+        health = 5;
         healthBar.UpdateHealth(health);
     }
 
@@ -42,7 +42,7 @@ public class Enemy : Entity
         image.sprite = Resources.Load<Sprite>("Enemy Images/Monster_Eldritchschatten");
         type = EnemyType.EldrichShadow;
         maxHealth = 100;
-        health = 100;
+        health = 5;
         healthBar.UpdateHealth(health);
     }
 }
