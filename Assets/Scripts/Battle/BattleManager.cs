@@ -12,6 +12,8 @@ public class BattleManager : MonoBehaviour
 
     public GameObject gameView;
     public GameObject craftingView;
+    public GameObject battleWinView;
+
     public CraftingManager craftingManager;
 
     public FloatingText hintText;
@@ -25,7 +27,7 @@ public class BattleManager : MonoBehaviour
         {
             if (state == GameState.PlayerTurn)
             {
-                DoPlayerMove(controller);
+                StartCoroutine(DoPlayerMove(controller));
             }
         };
 
@@ -60,7 +62,7 @@ public class BattleManager : MonoBehaviour
         }
     }
 
-    private void DoPlayerMove(CardController controller)
+    private IEnumerator DoPlayerMove(CardController controller)
     {
         if (cardToEnable != null)
         {
@@ -97,7 +99,11 @@ public class BattleManager : MonoBehaviour
                 SceneManager.LoadScene("WinScene");
             }
 
-            ToggleCraftingView();
+            gameView.SetActive(false);
+            battleWinView.SetActive(true);
+            yield return new WaitForSeconds(2);
+            battleWinView.SetActive(false);
+            craftingView.SetActive(true);
         }
         else
         {
