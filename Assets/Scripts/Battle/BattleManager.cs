@@ -1,7 +1,7 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Scripting;
 
 public class BattleManager : MonoBehaviour
 {
@@ -13,6 +13,8 @@ public class BattleManager : MonoBehaviour
     public GameObject gameView;
     public GameObject craftingView;
     public CraftingManager craftingManager;
+
+    public FloatingText hintText;
 
     private CardController cardToEnable;
 
@@ -66,7 +68,9 @@ public class BattleManager : MonoBehaviour
 
         controller.isReady = false;
         cardToEnable = controller;
-        enemy.TakeDamage((int)(enemy.CurrentEnemy.type.GetDamageMultiplier(controller.Card.damageType) * controller.Card.damage));
+        var damage = (int)(enemy.CurrentEnemy.type.GetDamageMultiplier(controller.Card.damageType) * controller.Card.damage);
+        enemy.TakeDamage(damage);
+        PlayHint(damage);
 
         if (enemy.health <= 0)
         {
@@ -77,13 +81,14 @@ public class BattleManager : MonoBehaviour
             // Next Enemy
             state = GameState.PlayerTurn;
             player.Respawn();
-            ToggleCraftingView();
 
             if (!enemy.LoadNextEnemy())
             {
                 state = GameState.Won;
                 SceneManager.LoadScene("WinScene");
             }
+            
+            ToggleCraftingView();
         }
         else
         {
@@ -104,6 +109,18 @@ public class BattleManager : MonoBehaviour
         else
         {
             state = GameState.PlayerTurn;
+        }
+    }
+
+    private void PlayHint(int damage)
+    {
+        if(damage == 0)
+        {
+            hintText.Play(enemy.healthBar.transform.position, "immune");
+        }
+        else
+        {
+            hintText.Play(enemy.healthBar.transform.position, $"-{damage}");
         }
     }
 }
