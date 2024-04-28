@@ -13,6 +13,9 @@ public class BattleManager : MonoBehaviour
 
     public GameState state = GameState.Start;
 
+    public GameObject gameView;
+    public GameObject craftingView;
+
     private CardController cardToEnable;
 
     void Start()
@@ -34,6 +37,25 @@ public class BattleManager : MonoBehaviour
         {
             state = GameState.Processing;
             StartCoroutine(DoEnemyMove());
+        }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ToggleCraftingView();
+        }
+    }
+
+    private void ToggleCraftingView()
+    {
+        if (gameView.activeSelf)
+        {
+            gameView.SetActive(false);
+            craftingView.SetActive(true);
+        }
+        else
+        {
+            gameView.SetActive(true);
+            craftingView.SetActive(false);
         }
     }
 
