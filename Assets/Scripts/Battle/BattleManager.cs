@@ -94,7 +94,7 @@ public class BattleManager : MonoBehaviour
                     case 4:
                         // Complete Win
                         state = GameState.Won;
-                        SceneManager.LoadScene("WindScene");
+                        SceneManager.LoadScene("WinScene");
                         break;
                 }
             }
@@ -113,6 +113,7 @@ public class BattleManager : MonoBehaviour
         if (player.health <= 0)
         {
             state = GameState.Lost;
+            SceneManager.LoadScene("LoseScene");
         }
         else
         {
