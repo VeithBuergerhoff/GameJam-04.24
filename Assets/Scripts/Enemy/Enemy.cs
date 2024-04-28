@@ -1,3 +1,4 @@
+using System;
 using Assets.Scripts;
 using UnityEngine;
 
@@ -5,44 +6,36 @@ public class Enemy : Entity
 {
     public SpriteRenderer image;
 
-    public EnemyType type;
+    public EnemyStats[] enemies;
+    public int enemyIndex = -1;
 
-    public Card drop;
+    public EnemyStats CurrentEnemy => enemies[enemyIndex];
+
+    [Serializable]
+    public class EnemyStats
+    {
+        public Sprite sprite;
+        public EnemyType type;
+        public int maxHealth;
+        public int damage;
+        public Card[] drops;
+    }
 
     void Awake()
     {
+        LoadNextEnemy();
+    }
+
+    public bool LoadNextEnemy()
+    {
+        if (++enemyIndex >= enemies.Length)
+        {
+            return false;
+        }
+        var enemy = CurrentEnemy;
+        image.sprite = enemy.sprite;
+        maxHealth = enemy.maxHealth;
         Respawn();
-    }
-
-    public void SwapToSlime() {
-        image.sprite = Resources.Load<Sprite>("Enemy Images/Monster_Schleim");
-        type = EnemyType.Slime;
-        maxHealth = 100;
-        health = 50;
-        healthBar.UpdateHealth(health);
-    }
-
-    public void SwapToTentacle() {
-        image.sprite = Resources.Load<Sprite>("Enemy Images/Monster_Tentakelmonster");
-        type = EnemyType.Tentacle;
-        maxHealth = 100;
-        health = 5;
-        healthBar.UpdateHealth(health);
-    }
-
-    public void SwapToChongusDragon() {
-        image.sprite = Resources.Load<Sprite>("Enemy Images/Monster_Chongusdragon");        
-        type = EnemyType.ChongusDragon;
-        maxHealth = 100;
-        health = 5;
-        healthBar.UpdateHealth(health);
-    }
-
-    public void SwapToEldrichShadow() {
-        image.sprite = Resources.Load<Sprite>("Enemy Images/Monster_Eldritchschatten");
-        type = EnemyType.EldrichShadow;
-        maxHealth = 100;
-        health = 5;
-        healthBar.UpdateHealth(health);
+        return true;
     }
 }

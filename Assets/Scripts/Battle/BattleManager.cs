@@ -6,9 +6,6 @@ using UnityEngine.Scripting;
 public class BattleManager : MonoBehaviour
 {
     public Player player;
-
-    private int fightCount = 0;
-
     public Enemy enemy;
 
     public GameState state = GameState.Start;
@@ -68,35 +65,21 @@ public class BattleManager : MonoBehaviour
 
         controller.isReady = false;
         cardToEnable = controller;
-        enemy.TakeDamage((int)(enemy.type.GetDamageMultiplier(controller.Card.damageType) * controller.Card.damage));
+        enemy.TakeDamage((int)(enemy.CurrentEnemy.type.GetDamageMultiplier(controller.Card.damageType) * controller.Card.damage));
 
         if (enemy.health <= 0)
         {
             state = GameState.WonFight;
-            player.essences.Add(enemy.drop);
+            player.essences.AddRange(enemy.CurrentEnemy.drops);
+
             // Next Enemy
-            if (fightCount <= 4)
+            state = GameState.PlayerTurn;
+            player.Respawn();
+
+            if (!enemy.LoadNextEnemy())
             {
-                state = GameState.PlayerTurn;
-                player.Respawn();
-                fightCount++;
-                switch (fightCount)
-                {
-                    case 1:
-                        enemy.SwapToChongusDragon();
-                        break;
-                    case 2:
-                        enemy.SwapToTentacle();
-                        break;
-                    case 3:
-                        enemy.SwapToEldrichShadow();
-                        break;
-                    case 4:
-                        // Complete Win
-                        state = GameState.Won;
-                        SceneManager.LoadScene("WinScene");
-                        break;
-                }
+                state = GameState.Won;
+                SceneManager.LoadScene("WinScene");
             }
         }
         else
@@ -109,7 +92,7 @@ public class BattleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         // we can do additional checks here
-        player.TakeDamage(10);
+        player.TakeDamage(enemy.CurrentEnemy.damage);
         if (player.health <= 0)
         {
             state = GameState.Lost;
