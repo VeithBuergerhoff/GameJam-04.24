@@ -16,13 +16,19 @@ namespace Assets.Scripts
             {
                 health = 0;
             }
-            healthBar.UpdateHealth(health);
+            if (healthBar != null)
+            {
+                healthBar.UpdateHealth(health);
+            }
         }
 
         public void Respawn()
         {
             health = maxHealth;
-            healthBar.SetMaxHealth(maxHealth);
+            if (healthBar != null)
+            {
+                healthBar.SetMaxHealth(maxHealth);
+            }
         }
     }
 }

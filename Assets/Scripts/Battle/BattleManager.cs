@@ -35,12 +35,12 @@ public class BattleManager : MonoBehaviour
     {
         if (cardToEnable != null)
         {
-            cardToEnable.isEnabled = true;
+            cardToEnable.isReady = true;
         }
 
-        controller.isEnabled = false;
+        controller.isReady = false;
         cardToEnable = controller;
-        enemy.TakeDamage((int)(enemy.type.GetDamageMultiplier(controller.card.damageType) * controller.card.damage));
+        enemy.TakeDamage((int)(enemy.type.GetDamageMultiplier(controller.Card.damageType) * controller.Card.damage));
 
         if (enemy.health <= 0)
         {

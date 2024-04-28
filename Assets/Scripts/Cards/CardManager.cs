@@ -14,11 +14,11 @@ public class CardManager : MonoBehaviour
 
     void Awake()
     {
+        var initalEssenceNames = new string[] { "Feuer", "Wasser", "Erde", "Wind" };
+        var initalEssences = essences.Where(card => initalEssenceNames.Contains(card.name)).ToArray();
         for (int i = 0; i < initialCardAmmount; i++)
         {
-            var initalEssenceNames = new string[] {"Feuer", "Wasser", "Erde", "Wind"};
-            var initalEssences = essences.Where(card => initalEssenceNames.Contains(card.name)).ToArray();
-            player.cardDisplay.AddCard(initalEssences[random.Next(initalEssences.Length)]);
+            player.essences.Add(initalEssences[random.Next(initalEssences.Length)]);
         }
     }
 }

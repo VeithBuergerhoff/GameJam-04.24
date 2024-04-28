@@ -16,20 +16,18 @@ public class CardDisplay : MonoBehaviour
 
     public void AddCard(Card card)
     {
-        var image = Instantiate(cardDisplay).GetComponent<CardController>();
-        cardDisplays.Add(image);
-        image.GetComponent<Image>().sprite = card.image;
-        image.transform.SetParent(transform);
+        var controller = Instantiate(cardDisplay, transform).GetComponent<CardController>();
+        cardDisplays.Add(controller);
 
-        image.card = card;
-        image.CardClicked += c => CardClicked?.Invoke(c);
+        controller.SetCard(card);
+        controller.CardClicked += c => CardClicked?.Invoke(c);
 
         Rerender();
     }
 
     public void RemoveCard(Card card)
     {
-        var item = cardDisplays.Where(x => x.card == card).FirstOrDefault();
+        var item = cardDisplays.Where(x => x.Card == card).FirstOrDefault();
         if (item != null)
         {
             cardDisplays.Remove(item);

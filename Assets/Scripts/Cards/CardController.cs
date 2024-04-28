@@ -9,29 +9,31 @@ public class CardController : MonoBehaviour, IPointerClickHandler, IPointerEnter
     public Color highlightColor = Color.magenta;
     public Color disabledColor = Color.gray;
     public int highlightBump = 20;
-    public bool isEnabled = true;
+    public bool isReady = true;
+    public bool isBumping = true;
 
-    private Image image;
-    private RectTransform rectTransform;
+    public Image image;
+    public RectTransform rectTransform;
 
-    public Card card;
+    public Card Card { get; private set; }
     public event Action<CardController> CardClicked;
 
-    void Awake()
+    public void SetCard(Card card)
     {
-        image = GetComponent<Image>();
-        rectTransform = GetComponent<RectTransform>();
+        image.sprite = card.image;
+        Card = card;
     }
 
     private void SetHighlight()
     {
-        image.color = isEnabled ? highlightColor : disabledColor;
+        image.color = isReady ? highlightColor : disabledColor;
     }
 
     void IPointerEnterHandler.OnPointerEnter(PointerEventData eventData)
     {
+
         SetHighlight();
-        if (isEnabled)
+        if (isReady && isBumping)
         {
             rectTransform.anchoredPosition += new Vector2(0, highlightBump);
         }
@@ -40,13 +42,16 @@ public class CardController : MonoBehaviour, IPointerClickHandler, IPointerEnter
     void IPointerExitHandler.OnPointerExit(PointerEventData eventData)
     {
         image.color = Color.white;
-        rectTransform.anchoredPosition *= Vector2.right;
+        if (isBumping)
+        {
+            rectTransform.anchoredPosition *= Vector2.right;
+        }
     }
 
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
-        if (isEnabled)
+        if (isReady)
         {
             CardClicked?.Invoke(this);
             SetHighlight();

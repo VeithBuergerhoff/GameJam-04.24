@@ -4,13 +4,13 @@ using System.Collections.Generic;
 
 public class CraftingHandler
 {
+    private readonly Dictionary<(string, string), Func<Card>> craftingRecipes = new();
 
-    private Dictionary<(string, string), Func<Card>> craftingRecipes = new();
+    private readonly CardManager cardManager;
 
-    public CardManager cardManager;
-
-    public CraftingHandler()
+    public CraftingHandler(CardManager cardManager)
     {
+        this.cardManager = cardManager;
         //Basic Cards
         AddCardRecipe("Wasser", "Feuer", () => GetDampfCard());
         AddCardRecipe("Wasser", "Luft", () => GetEisCard());
@@ -33,7 +33,7 @@ public class CraftingHandler
         AddCardRecipe("Wasser", "Tentakel", () => GetWassertentakelCard());
     }
 
-    public Card craftFrom(string esscence1, string esscence2)
+    public Card Craft(string esscence1, string esscence2)
     {
         // Prüfen, ob die Kombination im Dictionary vorhanden ist
         if (craftingRecipes.ContainsKey((esscence1, esscence2)))

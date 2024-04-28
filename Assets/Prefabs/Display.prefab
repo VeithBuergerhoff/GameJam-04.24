@@ -91,8 +91,7 @@ MonoBehaviour:
   highlightColor: {r: 0.94826746, g: 1, b: 0.9471698, a: 1}
   disabledColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.7176471}
   highlightBump: 20
-  isEnabled: 1
-  card:
-    image: {fileID: 0}
-    damageType: 0
-    damage: 10
+  isReady: 1
+  isBumping: 1
+  image: {fileID: 8209520770674491315}
+  rectTransform: {fileID: 3932501270796677976}
