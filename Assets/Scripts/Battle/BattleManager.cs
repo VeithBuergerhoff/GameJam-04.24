@@ -15,6 +15,7 @@ public class BattleManager : MonoBehaviour
     public CraftingManager craftingManager;
 
     public FloatingText hintText;
+    public Gradient hintTextGradient;
 
     private CardController cardToEnable;
 
@@ -68,9 +69,17 @@ public class BattleManager : MonoBehaviour
 
         controller.isReady = false;
         cardToEnable = controller;
-        var damage = (int)(enemy.CurrentEnemy.type.GetDamageMultiplier(controller.Card.damageType) * controller.Card.damage);
+        var damageMultiplier = enemy.CurrentEnemy.type.GetDamageMultiplier(controller.Card.damageType);
+        var damage = (int)(damageMultiplier * controller.Card.damage);
         enemy.TakeDamage(damage);
-        PlayHint(damage);
+        if (damage == 0)
+        {
+            hintText.Play(new Vector2(200, 180), "immune", Color.gray);
+        }
+        else
+        {
+            hintText.Play(new Vector2(200, 180), $"-{damage}", hintTextGradient.Evaluate(damageMultiplier / 2));
+        }
 
         if (enemy.health <= 0)
         {
@@ -87,7 +96,7 @@ public class BattleManager : MonoBehaviour
                 state = GameState.Won;
                 SceneManager.LoadScene("WinScene");
             }
-            
+
             ToggleCraftingView();
         }
         else
@@ -100,7 +109,9 @@ public class BattleManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         // we can do additional checks here
-        player.TakeDamage(enemy.CurrentEnemy.damage);
+        var damage = enemy.CurrentEnemy.damage;
+        hintText.Play(new Vector2(-200, 180), $"-{damage}", Color.red);
+        player.TakeDamage(damage);
         if (player.health <= 0)
         {
             state = GameState.Lost;
@@ -109,18 +120,6 @@ public class BattleManager : MonoBehaviour
         else
         {
             state = GameState.PlayerTurn;
-        }
-    }
-
-    private void PlayHint(int damage)
-    {
-        if(damage == 0)
-        {
-            hintText.Play(enemy.healthBar.transform.position, "immune");
-        }
-        else
-        {
-            hintText.Play(enemy.healthBar.transform.position, $"-{damage}");
         }
     }
 }
