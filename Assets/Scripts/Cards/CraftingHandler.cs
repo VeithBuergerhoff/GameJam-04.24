@@ -29,7 +29,7 @@ public class CraftingHandler
         AddCardRecipe("Erde", "Tentakel", () => GetErdtentakelCard());
 
         // Wasser special
-        AddCardRecipe("Wasser", "Schlein", () => GetWasserschleimCard());
+        AddCardRecipe("Wasser", "Schleim", () => GetWasserschleimCard());
         AddCardRecipe("Wasser", "Tentakel", () => GetWassertentakelCard());
     }
 
