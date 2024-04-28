@@ -4,6 +4,7 @@
     PlayerTurn,
     EnemyTurn,
     Processing,
-    Won,
-    Lost
+    WonFight,
+    Lost,
+    Won
 }
