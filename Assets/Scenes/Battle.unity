@@ -1669,10 +1669,6 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 838347310}
-    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
-      propertyPath: cardManager
-      value: 
-      objectReference: {fileID: 4723074241054771355}
     - target: {fileID: 6018265912211305205, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
       propertyPath: m_Name
       value: Enemy
