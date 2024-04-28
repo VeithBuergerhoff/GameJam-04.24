@@ -93,16 +93,17 @@ public class BattleManager : MonoBehaviour
             state = GameState.PlayerTurn;
             player.Respawn();
 
+            gameView.SetActive(false);
+            battleWinView.SetActive(true);
+            yield return new WaitForSeconds(2);
+            battleWinView.SetActive(false);
+
             if (!enemy.LoadNextEnemy())
             {
                 state = GameState.Won;
                 SceneManager.LoadScene("WinScene");
             }
 
-            gameView.SetActive(false);
-            battleWinView.SetActive(true);
-            yield return new WaitForSeconds(2);
-            battleWinView.SetActive(false);
             craftingView.SetActive(true);
         }
         else
