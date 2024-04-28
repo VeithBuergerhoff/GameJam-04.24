@@ -1683,27 +1683,67 @@ PrefabInstance:
       objectReference: {fileID: 838347310}
     - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
       propertyPath: enemies.Array.size
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
       propertyPath: enemies.Array.data[1].type
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[2].type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[3].type
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[0].damage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
       propertyPath: enemies.Array.data[0].sprite
       value: 
       objectReference: {fileID: 21300000, guid: 47537eb75cf4bd1498aaf44540e69596, type: 3}
     - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[1].damage
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
       propertyPath: enemies.Array.data[1].sprite
       value: 
       objectReference: {fileID: 21300000, guid: d0e2587a8a7018243a4c62127f72e8e8, type: 3}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[2].damage
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[2].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ca437bdec0bb0b54abcd77eede5817fa, type: 3}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[3].damage
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[3].sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 7d207c23831f05347ae4ed396422f253, type: 3}
     - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
       propertyPath: enemies.Array.data[0].maxHealth
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
       propertyPath: enemies.Array.data[1].maxHealth
-      value: 20
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[2].maxHealth
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[3].maxHealth
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
       propertyPath: enemies.Array.data[0].drops.Array.size
@@ -1711,6 +1751,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
       propertyPath: enemies.Array.data[1].drops.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[2].drops.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
@@ -1722,6 +1766,14 @@ PrefabInstance:
       value: Schuppen
       objectReference: {fileID: 0}
     - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[2].drops.Array.data[0].name
+      value: Tentakel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[2].drops.Array.data[1].name
+      value: Tentakel
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
       propertyPath: enemies.Array.data[0].drops.Array.data[0].image
       value: 
       objectReference: {fileID: 21300000, guid: 44fb5b440c0367249badaff3f30da95d, type: 3}
@@ -1730,11 +1782,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 21300000, guid: aa1d8efd5f0a5b445b6843eb8a35e177, type: 3}
     - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[2].drops.Array.data[0].image
+      value: 
+      objectReference: {fileID: 21300000, guid: a27ac4424b68278498d3da14df9a539c, type: 3}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[2].drops.Array.data[1].image
+      value: 
+      objectReference: {fileID: 21300000, guid: 7d207c23831f05347ae4ed396422f253, type: 3}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
       propertyPath: enemies.Array.data[0].drops.Array.data[0].damageType
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
       propertyPath: enemies.Array.data[1].drops.Array.data[0].damageType
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[2].drops.Array.data[0].damageType
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2351523528522674443, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
+      propertyPath: enemies.Array.data[2].drops.Array.data[1].damageType
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6018265912211305205, guid: 4b5b509abdc43254db6a44cbca4fcc22, type: 3}
