@@ -113,6 +113,7 @@ public class BattleManager : MonoBehaviour
         if (player.health <= 0)
         {
             state = GameState.Lost;
+            SceneManager.LoadScene("LoseScene");
         }
         else
         {
