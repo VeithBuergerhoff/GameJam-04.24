@@ -11,8 +11,6 @@ public class CardManager : MonoBehaviour
     public Player player;
     public int initialEssenceAmmount = 5;
 
-    public int initialCraftableCardAmmount = 10;
-
     private readonly static System.Random random = new();
 
     void Awake()
@@ -34,14 +32,14 @@ public class CardManager : MonoBehaviour
         var basicCraftableCardNames = new string[]
         {
             CraftableCardConstants.ICE,
-            CraftableCardConstants.LAVA,
             CraftableCardConstants.PLANT,
             CraftableCardConstants.STEAM,
-            CraftableCardConstants.SAND,
         };
+        
         var basicCraftableCards = craftableCards.Where(card => basicCraftableCardNames.Contains(card.name)).ToArray();
-        for(int i = 0; i < initialCraftableCardAmmount; i++) {
-            player.cardDisplay.AddCard(basicCraftableCards[random.Next(basicCraftableCards.Length)]);
+        foreach(var card in basicCraftableCards) {
+            player.cardDisplay.AddCard(card);
         }
+        
     }
 }
