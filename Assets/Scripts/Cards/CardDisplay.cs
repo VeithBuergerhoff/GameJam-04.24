@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class CardDisplay : MonoBehaviour
 {
     public GameObject cardDisplay;
-    public float cardWidth;
 
     // aggregates all card click events from the owned controllers 
     public event Action<CardController> CardClicked;
@@ -39,9 +38,10 @@ public class CardDisplay : MonoBehaviour
 
     public void Rerender()
     {
+        var cardWidth = cardDisplay.GetComponent<RectTransform>().rect.width;
         for (int i = 0; i < cardDisplays.Count; i++)
         {
-            var width = cardWidth - cardDisplays.Count;
+            var width = cardWidth / 2 - cardDisplays.Count;
             var shift = width * (cardDisplays.Count - 1) / 2;
             var newPosition = transform.position + Vector3.right * (i * width - shift);
             cardDisplays[i].transform.position = newPosition;
